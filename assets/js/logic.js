@@ -7,6 +7,9 @@ const scoreDisplay = document.getElementById('final-score')
 let currentQuestion = 0
 let time = 75
 
+const resultDisplay = document.createElement('div')
+questionsContainer.appendChild(resultDisplay)
+
 startButton.addEventListener('click', function() {
   document.getElementById('start-screen').classList.add('hide')
   loadQuestion(currentQuestion)
@@ -25,6 +28,13 @@ function loadQuestion(currentQuestion) {
     const optionElement = document.createElement('button')
     optionElement.innerHTML = (optionIndex + 1) + '. ' + option
     optionElement.addEventListener('click', function() {
+      if(optionIndex == questions[currentQuestion].answer) {
+        resultDisplay.innerHTML = 'Correct!'
+      } else {
+        resultDisplay.innerHTML = 'Wrong!'
+        time -= 10
+        timeDisplay.innerHTML = time
+      }
       currentQuestion++
       if(currentQuestion < questions.length) {
         loadQuestion(currentQuestion)
