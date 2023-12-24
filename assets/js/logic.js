@@ -31,8 +31,12 @@ function loadQuestion(currentQuestion) {
     optionElement.addEventListener('click', function() {
       if(optionIndex == questions[currentQuestion].answer) {
         resultDisplay.innerHTML = 'Correct!'
+        var audio = new Audio('assets/sfx/correct.wav');
+        audio.play();
       } else {
         resultDisplay.innerHTML = 'Wrong!'
+        var audio = new Audio('assets/sfx/incorrect.wav');
+        audio.play();
         time -= 10
         timeDisplay.innerHTML = time
       }
