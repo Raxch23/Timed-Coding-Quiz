@@ -1,0 +1,1 @@
+const highscoresDisplay = document.getElementById('highscores')
