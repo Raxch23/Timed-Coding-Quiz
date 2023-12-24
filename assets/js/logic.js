@@ -20,9 +20,19 @@ startButton.addEventListener('click', function() {
 
 function loadQuestion(currentQuestion) {
   questionsContainer.children[0].innerHTML = questions[currentQuestion].title
+  questionsContainer.children[1].innerHTML = ''
   for (const [optionIndex, option] of questions[currentQuestion].choices.entries()) {
     const optionElement = document.createElement('button')
     optionElement.innerHTML = (optionIndex + 1) + '. ' + option
+    optionElement.addEventListener('click', function() {
+      currentQuestion++
+      if(currentQuestion < questions.length) {
+        loadQuestion(currentQuestion)
+      } else {
+        questionsContainer.classList.add('hide')
+        endScreen.classList.remove('hide')
+      }
+    })
     questionsContainer.children[1].appendChild(optionElement)
   }  
 }
