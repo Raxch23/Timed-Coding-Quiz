@@ -49,3 +49,8 @@ function loadQuestion(currentQuestion) {
     questionsContainer.children[1].appendChild(optionElement)
   }  
 }
+
+const submitScore = document.getElementById('submit')
+submitScore.addEventListener('click', function() {
+  window.location.href = "highscores.html?name=" + document.getElementById('initials').value;
+})
