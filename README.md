@@ -10,6 +10,7 @@ We were task to create multiple-choice, timed coding quiz questions using JavaSc
 Coding Quiz Challenge can be used to test ones knowledge on HTML Markup.
 
 # Instalation
-Deployed Link: https://raxch23.github.io/Timed-Quiz/
+Deployed Link: https://raxch23.github.io/Timed-Coding-Quiz/
+
 
 
