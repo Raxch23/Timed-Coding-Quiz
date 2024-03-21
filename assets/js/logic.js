@@ -17,7 +17,14 @@ startButton.addEventListener('click', function() {
   questionsContainer.classList.remove('hide')
   timeDisplay.innerHTML = time
   timer = setInterval(function() {
-    time--
+    if(time > 0) {
+      time--
+    } else {
+      questionsContainer.classList.add('hide')
+      endScreen.classList.remove('hide')
+      clearInterval(timer)
+      scoreDisplay.innerHTML = time
+    }
     timeDisplay.innerHTML = time
   }, 1000)
 })
@@ -52,6 +59,19 @@ function loadQuestion(currentQuestion) {
     })
     questionsContainer.children[1].appendChild(optionElement)
   }  
+}
+
+if(localStorage.getItem('highscores') === null) {
+  localStorage.setItem('highscores', JSON.stringify([]))
+}
+
+function savePlayerScore() {
+  let highscores = JSON.parse(localStorage.getItem('highscores'))
+  highscores.push({
+    player: document.getElementById('initials').value,
+    highscore: time
+  })
+  localStorage.setItem('highscores', JSON.stringify(highscores))
 }
 
 const submitScore = document.getElementById('submit')
